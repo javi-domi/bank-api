@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
 import { accountModel } from "../models/accountModel.js";
 
-(async () => {
+require("dotenv").config({
+  path: process.env.DBURL,
+})(async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://trabalho:trabalho4@bootcamp.ushnj.mongodb.net/bank?retryWrites=true&w=majority",
-      { useNewUrlParser: true, useUnifiedTopology: true }
-    );
+    await mongoose.connect(`${path}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (error) {
     console.log("Erro ao conetar no MongoDB");
   }
